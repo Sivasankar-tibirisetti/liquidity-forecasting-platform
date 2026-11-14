@@ -1,0 +1,47 @@
+[
+  {
+    "id": "SCENARIO-BASE",
+    "name": "Base Scenario",
+    "code": "BASE",
+    "scenarioType": "BASE",
+    "description": null,
+    "assumptions": {
+      "receiptDelayDays": 0,
+      "paymentMultiplier": 1,
+      "receiptMultiplier": 1
+    },
+    "isActive": true,
+    "createdAt": "2026-11-14T10:13:29.003Z",
+    "updatedAt": "2026-11-14T10:13:29.003Z"
+  },
+  {
+    "id": "SCENARIO-DELAYED",
+    "name": "Delayed Receipt Scenario",
+    "code": "DELAYED",
+    "scenarioType": "DELAYED_RECEIPT",
+    "description": null,
+    "assumptions": {
+      "receiptDelayDays": 7,
+      "paymentMultiplier": 1,
+      "receiptMultiplier": 1
+    },
+    "isActive": true,
+    "createdAt": "2026-11-14T10:13:29.003Z",
+    "updatedAt": "2026-11-14T10:13:29.003Z"
+  },
+  {
+    "id": "SCENARIO-STRESS",
+    "name": "Stress Scenario",
+    "code": "STRESS",
+    "scenarioType": "STRESS",
+    "description": null,
+    "assumptions": {
+      "receiptDelayDays": 15,
+      "paymentMultiplier": 1.2,
+      "receiptMultiplier": 0.7
+    },
+    "isActive": true,
+    "createdAt": "2026-11-14T10:13:29.003Z",
+    "updatedAt": "2026-11-14T10:13:29.003Z"
+  }
+]

@@ -1,0 +1,51 @@
+{
+  "generatedAt": "2026-11-14T14:03:15.816Z",
+  "totalCases": 5,
+  "passed": 5,
+  "failed": 0,
+  "baselineDataModified": false,
+  "results": [
+    {
+      "recordId": "ANOM-001",
+      "issueType": "OPENING_LEDGER_CLOSING_MISMATCH",
+      "detected": true,
+      "calculatedClosing": 115000,
+      "reportedClosing": 130000,
+      "labelExists": true,
+      "labelMatches": true,
+      "passed": true
+    },
+    {
+      "recordId": "ANOM-002",
+      "issueType": "MISSING_FX_RATE",
+      "detected": true,
+      "labelExists": true,
+      "labelMatches": true,
+      "passed": true
+    },
+    {
+      "recordId": "ANOM-003",
+      "issueType": "DUPLICATE_CASH_FLOW",
+      "detected": true,
+      "labelExists": true,
+      "labelMatches": true,
+      "passed": true
+    },
+    {
+      "recordId": "ANOM-004",
+      "issueType": "ACTUAL_AFTER_FORECAST_CUTOFF",
+      "detected": true,
+      "labelExists": true,
+      "labelMatches": true,
+      "passed": true
+    },
+    {
+      "recordId": "ANOM-005",
+      "issueType": "MIXED_CURRENCY_WITHOUT_CONVERSION",
+      "detected": true,
+      "labelExists": true,
+      "labelMatches": true,
+      "passed": true
+    }
+  ]
+}

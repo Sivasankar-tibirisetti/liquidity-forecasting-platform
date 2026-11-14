@@ -1,0 +1,38 @@
+{
+  "datasetType": "Expected anomaly labels and detection rules",
+  "records": [
+    {
+      "recordId": "ANOM-001",
+      "issueType": "OPENING_LEDGER_CLOSING_MISMATCH",
+      "severity": "HIGH",
+      "expectedValue": 115000,
+      "observedValue": 130000,
+      "difference": 15000,
+      "detectionRule": "Opening balance + ledger inflows - ledger outflows must equal closing balance."
+    },
+    {
+      "recordId": "ANOM-002",
+      "issueType": "MISSING_FX_RATE",
+      "severity": "HIGH",
+      "detectionRule": "A non-reporting-currency transaction requires an applicable FX rate for its effective date."
+    },
+    {
+      "recordId": "ANOM-003",
+      "issueType": "DUPLICATE_CASH_FLOW",
+      "severity": "HIGH",
+      "detectionRule": "Multiple transactions with the same deduplication key must be reviewed as duplicates."
+    },
+    {
+      "recordId": "ANOM-004",
+      "issueType": "ACTUAL_AFTER_FORECAST_CUTOFF",
+      "severity": "HIGH",
+      "detectionRule": "Actual transactions dated after the forecast cutoff must not enter the historical forecast input set."
+    },
+    {
+      "recordId": "ANOM-005",
+      "issueType": "MIXED_CURRENCY_WITHOUT_CONVERSION",
+      "severity": "HIGH",
+      "detectionRule": "Amounts in different currencies must not be added without conversion into a common reporting currency."
+    }
+  ]
+}

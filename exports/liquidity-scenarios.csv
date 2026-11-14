@@ -1,0 +1,4 @@
+"id","name","code","scenarioType","description","assumptions","isActive","createdAt","updatedAt"
+"SCENARIO-BASE","Base Scenario","BASE","BASE","","{""receiptDelayDays"":0,""paymentMultiplier"":1,""receiptMultiplier"":1}","true","2026-11-14T10:13:29.003Z","2026-11-14T10:13:29.003Z"
+"SCENARIO-DELAYED","Delayed Receipt Scenario","DELAYED","DELAYED_RECEIPT","","{""receiptDelayDays"":7,""paymentMultiplier"":1,""receiptMultiplier"":1}","true","2026-11-14T10:13:29.003Z","2026-11-14T10:13:29.003Z"
+"SCENARIO-STRESS","Stress Scenario","STRESS","STRESS","","{""receiptDelayDays"":15,""paymentMultiplier"":1.2,""receiptMultiplier"":0.7}","true","2026-11-14T10:13:29.003Z","2026-11-14T10:13:29.003Z"

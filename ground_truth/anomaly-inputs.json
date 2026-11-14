@@ -1,0 +1,70 @@
+{
+  "datasetType": "Isolated synthetic anomaly fixtures",
+  "baselineDataModified": false,
+  "records": [
+    {
+      "recordId": "ANOM-001",
+      "accountId": "BANKACC-ENT-000001-001",
+      "openingBalance": 100000,
+      "ledgerInflows": 20000,
+      "ledgerOutflows": 5000,
+      "reportedClosingBalance": 130000,
+      "currency": "INR"
+    },
+    {
+      "recordId": "ANOM-002",
+      "transactionId": "FX-TXN-001",
+      "sourceCurrency": "USD",
+      "reportingCurrency": "INR",
+      "amount": 1000,
+      "exchangeRate": null,
+      "convertedAmount": null,
+      "effectiveDate": "2026-11-10"
+    },
+    {
+      "recordId": "ANOM-003",
+      "transactions": [
+        {
+          "transactionId": "CF-DUP-001",
+          "dedupeKey": "INVOICE-2026-0091",
+          "amount": 25000,
+          "currency": "INR"
+        },
+        {
+          "transactionId": "CF-DUP-002",
+          "dedupeKey": "INVOICE-2026-0091",
+          "amount": 25000,
+          "currency": "INR"
+        }
+      ]
+    },
+    {
+      "recordId": "ANOM-004",
+      "forecastCutoffDate": "2026-11-14",
+      "actualTransaction": {
+        "transactionId": "ACT-LATE-001",
+        "actualDate": "2026-11-16",
+        "amount": 45000,
+        "currency": "INR"
+      }
+    },
+    {
+      "recordId": "ANOM-005",
+      "reportingCurrency": "INR",
+      "transactions": [
+        {
+          "transactionId": "MIX-001",
+          "amount": 1000,
+          "currency": "INR"
+        },
+        {
+          "transactionId": "MIX-002",
+          "amount": 100,
+          "currency": "USD"
+        }
+      ],
+      "reportedCombinedAmount": 1100,
+      "conversionApplied": false
+    }
+  ]
+}

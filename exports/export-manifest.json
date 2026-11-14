@@ -1,0 +1,113 @@
+{
+  "generatedAt": "2026-11-14T13:18:35.638Z",
+  "format": [
+    "JSON",
+    "CSV"
+  ],
+  "datasets": [
+    {
+      "dataset": "legal-entities",
+      "rowCount": 30,
+      "jsonFile": "legal-entities.json",
+      "csvFile": "legal-entities.csv"
+    },
+    {
+      "dataset": "bank-accounts",
+      "rowCount": 150,
+      "jsonFile": "bank-accounts.json",
+      "csvFile": "bank-accounts.csv"
+    },
+    {
+      "dataset": "ledger-entries",
+      "rowCount": 100000,
+      "jsonFile": "ledger-entries.json",
+      "csvFile": "ledger-entries.csv"
+    },
+    {
+      "dataset": "receivables",
+      "rowCount": 10000,
+      "jsonFile": "receivables.json",
+      "csvFile": "receivables.csv"
+    },
+    {
+      "dataset": "payables",
+      "rowCount": 10000,
+      "jsonFile": "payables.json",
+      "csvFile": "payables.csv"
+    },
+    {
+      "dataset": "currency-rates",
+      "rowCount": 1600,
+      "jsonFile": "currency-rates.json",
+      "csvFile": "currency-rates.csv"
+    },
+    {
+      "dataset": "cash-flow-forecasts",
+      "rowCount": 20000,
+      "jsonFile": "cash-flow-forecasts.json",
+      "csvFile": "cash-flow-forecasts.csv"
+    },
+    {
+      "dataset": "liquidity-scenarios",
+      "rowCount": 3,
+      "jsonFile": "liquidity-scenarios.json",
+      "csvFile": "liquidity-scenarios.csv"
+    },
+    {
+      "dataset": "forecast-runs",
+      "rowCount": 9,
+      "jsonFile": "forecast-runs.json",
+      "csvFile": "forecast-runs.csv"
+    },
+    {
+      "dataset": "scenario-adjustments",
+      "rowCount": 0,
+      "jsonFile": "scenario-adjustments.json",
+      "csvFile": "scenario-adjustments.csv"
+    },
+    {
+      "dataset": "forecast-run-items",
+      "rowCount": 22800,
+      "jsonFile": "forecast-run-items.json",
+      "csvFile": "forecast-run-items.csv"
+    },
+    {
+      "dataset": "forecast-run-lines",
+      "rowCount": 3932,
+      "jsonFile": "forecast-run-lines.json",
+      "csvFile": "forecast-run-lines.csv"
+    },
+    {
+      "dataset": "actual-cash-flows",
+      "rowCount": 12486,
+      "jsonFile": "actual-cash-flows.json",
+      "csvFile": "actual-cash-flows.csv"
+    },
+    {
+      "dataset": "account-balance-snapshots",
+      "rowCount": 0,
+      "jsonFile": "account-balance-snapshots.json",
+      "csvFile": "account-balance-snapshots.csv"
+    },
+    {
+      "dataset": "forecast-comparisons",
+      "rowCount": 0,
+      "jsonFile": "forecast-comparisons.json",
+      "csvFile": "forecast-comparisons.csv"
+    },
+    {
+      "dataset": "audit-events",
+      "rowCount": 0,
+      "jsonFile": "audit-events.json",
+      "csvFile": "audit-events.csv"
+    },
+    {
+      "dataset": "entity-events",
+      "rowCount": 0,
+      "jsonFile": "entity-events.json",
+      "csvFile": "entity-events.csv"
+    }
+  ],
+  "totalDatasets": 17,
+  "totalRecords": 181010
+}

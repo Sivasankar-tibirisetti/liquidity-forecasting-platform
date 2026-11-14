@@ -1,0 +1,302 @@
+[
+  {
+    "id": "ENT-000001",
+    "name": "Synthetic Corporation 1",
+    "code": "CORP-001",
+    "country": "USA",
+    "baseCurrency": "GBP",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000002",
+    "name": "Synthetic Corporation 2",
+    "code": "CORP-002",
+    "country": "Japan",
+    "baseCurrency": "JPY",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000003",
+    "name": "Synthetic Corporation 3",
+    "code": "CORP-003",
+    "country": "UK",
+    "baseCurrency": "USD",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000004",
+    "name": "Synthetic Corporation 4",
+    "code": "CORP-004",
+    "country": "Japan",
+    "baseCurrency": "USD",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000005",
+    "name": "Synthetic Corporation 5",
+    "code": "CORP-005",
+    "country": "Japan",
+    "baseCurrency": "USD",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000006",
+    "name": "Synthetic Corporation 6",
+    "code": "CORP-006",
+    "country": "Japan",
+    "baseCurrency": "EUR",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000007",
+    "name": "Synthetic Corporation 7",
+    "code": "CORP-007",
+    "country": "Germany",
+    "baseCurrency": "USD",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000008",
+    "name": "Synthetic Corporation 8",
+    "code": "CORP-008",
+    "country": "India",
+    "baseCurrency": "INR",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000009",
+    "name": "Synthetic Corporation 9",
+    "code": "CORP-009",
+    "country": "Japan",
+    "baseCurrency": "JPY",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000010",
+    "name": "Synthetic Corporation 10",
+    "code": "CORP-010",
+    "country": "India",
+    "baseCurrency": "INR",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000011",
+    "name": "Synthetic Corporation 11",
+    "code": "CORP-011",
+    "country": "Japan",
+    "baseCurrency": "GBP",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000012",
+    "name": "Synthetic Corporation 12",
+    "code": "CORP-012",
+    "country": "USA",
+    "baseCurrency": "GBP",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000013",
+    "name": "Synthetic Corporation 13",
+    "code": "CORP-013",
+    "country": "UK",
+    "baseCurrency": "USD",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000014",
+    "name": "Synthetic Corporation 14",
+    "code": "CORP-014",
+    "country": "Germany",
+    "baseCurrency": "GBP",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000015",
+    "name": "Synthetic Corporation 15",
+    "code": "CORP-015",
+    "country": "Germany",
+    "baseCurrency": "JPY",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000016",
+    "name": "Synthetic Corporation 16",
+    "code": "CORP-016",
+    "country": "Germany",
+    "baseCurrency": "JPY",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000017",
+    "name": "Synthetic Corporation 17",
+    "code": "CORP-017",
+    "country": "UK",
+    "baseCurrency": "EUR",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000018",
+    "name": "Synthetic Corporation 18",
+    "code": "CORP-018",
+    "country": "Japan",
+    "baseCurrency": "GBP",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000019",
+    "name": "Synthetic Corporation 19",
+    "code": "CORP-019",
+    "country": "India",
+    "baseCurrency": "USD",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000020",
+    "name": "Synthetic Corporation 20",
+    "code": "CORP-020",
+    "country": "India",
+    "baseCurrency": "USD",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000021",
+    "name": "Synthetic Corporation 21",
+    "code": "CORP-021",
+    "country": "UK",
+    "baseCurrency": "JPY",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000022",
+    "name": "Synthetic Corporation 22",
+    "code": "CORP-022",
+    "country": "Germany",
+    "baseCurrency": "JPY",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000023",
+    "name": "Synthetic Corporation 23",
+    "code": "CORP-023",
+    "country": "India",
+    "baseCurrency": "INR",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000024",
+    "name": "Synthetic Corporation 24",
+    "code": "CORP-024",
+    "country": "UK",
+    "baseCurrency": "EUR",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000025",
+    "name": "Synthetic Corporation 25",
+    "code": "CORP-025",
+    "country": "Japan",
+    "baseCurrency": "JPY",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000026",
+    "name": "Synthetic Corporation 26",
+    "code": "CORP-026",
+    "country": "Japan",
+    "baseCurrency": "INR",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000027",
+    "name": "Synthetic Corporation 27",
+    "code": "CORP-027",
+    "country": "USA",
+    "baseCurrency": "EUR",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000028",
+    "name": "Synthetic Corporation 28",
+    "code": "CORP-028",
+    "country": "Germany",
+    "baseCurrency": "INR",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000029",
+    "name": "Synthetic Corporation 29",
+    "code": "CORP-029",
+    "country": "UK",
+    "baseCurrency": "EUR",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  },
+  {
+    "id": "ENT-000030",
+    "name": "Synthetic Corporation 30",
+    "code": "CORP-030",
+    "country": "Japan",
+    "baseCurrency": "EUR",
+    "status": "ACTIVE",
+    "createdAt": "2026-11-14T10:13:20.282Z",
+    "updatedAt": "2026-11-14T10:13:20.282Z"
+  }
+]

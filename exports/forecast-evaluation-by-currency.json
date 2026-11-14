@@ -1,0 +1,52 @@
+{
+  "generatedAt": "2026-11-14T13:16:23.936Z",
+  "sourceReport": "forecast-evaluation.json",
+  "methodology": "Metrics are calculated separately for each account currency. Variance is actual net flow minus forecast net flow. MAPE excludes zero-actual groups.",
+  "currencyMetrics": {
+    "JPY": {
+      "comparisonGroups": 2201,
+      "MAE": 3864.692,
+      "RMSE": 5340.3488,
+      "MAPE_percent": 3.1,
+      "meanBias": 147.8029,
+      "totalBias": 325314.2173,
+      "percentageErrorGroups": 2201
+    },
+    "USD": {
+      "comparisonGroups": 2221,
+      "MAE": 3879.3254,
+      "RMSE": 5336.9737,
+      "MAPE_percent": 2.64,
+      "meanBias": -84.2336,
+      "totalBias": -187082.8743,
+      "percentageErrorGroups": 2221
+    },
+    "GBP": {
+      "comparisonGroups": 2165,
+      "MAE": 3909.5003,
+      "RMSE": 5345.1472,
+      "MAPE_percent": 2.05,
+      "meanBias": 114.9359,
+      "totalBias": 248836.1178,
+      "percentageErrorGroups": 2165
+    },
+    "INR": {
+      "comparisonGroups": 2113,
+      "MAE": 4032.8826,
+      "RMSE": 5452.311,
+      "MAPE_percent": 2.31,
+      "meanBias": -116.534,
+      "totalBias": -246236.3424,
+      "percentageErrorGroups": 2113
+    },
+    "EUR": {
+      "comparisonGroups": 2178,
+      "MAE": 3767.9807,
+      "RMSE": 5112.813,
+      "MAPE_percent": 1.91,
+      "meanBias": 23.2369,
+      "totalBias": 50609.9068,
+      "percentageErrorGroups": 2178
+    }
+  }
+}

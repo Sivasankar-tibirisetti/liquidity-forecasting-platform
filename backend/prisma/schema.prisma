@@ -1,0 +1,396 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum RecordStatus {
+  ACTIVE
+  INACTIVE
+  ARCHIVED
+}
+
+enum AccountStatus {
+  ACTIVE
+  FROZEN
+  CLOSED
+}
+
+enum FlowType {
+  INFLOW
+  OUTFLOW
+}
+
+enum FlowStatus {
+  SCHEDULED
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}
+
+enum ScenarioType {
+  BASE
+  DELAYED_RECEIPT
+  STRESS
+}
+
+enum ForecastStatus {
+  PENDING
+  RUNNING
+  COMPLETED
+  FAILED
+}
+
+enum LedgerEntryType {
+  OPENING_BALANCE
+  RECEIPT
+  PAYMENT
+  TRANSFER
+  ADJUSTMENT
+  FEE
+}
+
+enum AdjustmentType {
+  DELAY_DAYS
+  AMOUNT_MULTIPLIER
+  EXCLUDE_FLOW
+  ADDITIONAL_OUTFLOW
+}
+
+// 1. LEGAL ENTITY
+
+model LegalEntity {
+  id           String       @id
+  name         String
+  code         String       @unique
+  country      String
+  baseCurrency String
+  status       RecordStatus @default(ACTIVE)
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  bankAccounts BankAccount[]
+  receivables  Receivable[]
+  payables     Payable[]
+  forecasts    CashFlowForecast[]
+  events       EntityEvent[]
+}
+
+// 2. BANK ACCOUNT
+
+model BankAccount {
+  id                  String               @id
+  entityId            String
+  accountSequence     Int
+  bankName            String
+  accountNumberMasked String
+  currency            String
+  openingBalance      Decimal              @db.Decimal(20, 4)
+  openingBalanceDate  DateTime             @db.Date
+  status              AccountStatus        @default(ACTIVE)
+  forecastComparisons ForecastComparison[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  entity LegalEntity @relation(fields: [entityId], references: [id], onDelete: Restrict)
+
+  ledgerEntries LedgerEntry[]
+  forecasts     CashFlowForecast[]
+  actualFlows   ActualCashFlow[]
+  snapshots     AccountBalanceSnapshot[]
+  forecastItems ForecastRunItem[]
+
+  @@unique([entityId, accountSequence])
+  @@index([entityId])
+}
+
+// 3. LEDGER ENTRY
+
+model LedgerEntry {
+  id            String          @id
+  bankAccountId String
+  entryDate     DateTime        @db.Date
+  postingDate   DateTime?
+  entryType     LedgerEntryType
+  direction     FlowType
+  amount        Decimal         @db.Decimal(20, 4)
+  currency      String
+  reference     String?
+  description   String?
+  createdAt     DateTime        @default(now())
+
+  bankAccount BankAccount @relation(fields: [bankAccountId], references: [id], onDelete: Restrict)
+
+  @@index([bankAccountId, entryDate])
+}
+
+// 4. RECEIVABLE
+
+model Receivable {
+  id               String    @id
+  entityId         String
+  invoiceNumber    String    @unique
+  customerName     String
+  currency         String
+  amount           Decimal   @db.Decimal(20, 4)
+  issueDate        DateTime  @db.Date
+  dueDate          DateTime  @db.Date
+  expectedDate     DateTime  @db.Date
+  actualReceivedAt DateTime?
+  actualAmount     Decimal?  @db.Decimal(20, 4)
+  status           String    @default("PENDING")
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  entity    LegalEntity        @relation(fields: [entityId], references: [id], onDelete: Restrict)
+  forecasts CashFlowForecast[]
+
+  @@index([entityId, expectedDate])
+}
+
+// 5. PAYABLE
+
+model Payable {
+  id            String    @id
+  entityId      String
+  invoiceNumber String    @unique
+  supplierName  String
+  currency      String
+  amount        Decimal   @db.Decimal(20, 4)
+  issueDate     DateTime  @db.Date
+  dueDate       DateTime  @db.Date
+  expectedDate  DateTime  @db.Date
+  actualPaidAt  DateTime?
+  actualAmount  Decimal?  @db.Decimal(20, 4)
+  status        String    @default("PENDING")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  entity    LegalEntity        @relation(fields: [entityId], references: [id], onDelete: Restrict)
+  forecasts CashFlowForecast[]
+
+  @@index([entityId, expectedDate])
+}
+
+// 6. CURRENCY RATE
+
+model CurrencyRate {
+  id            String   @id
+  baseCurrency  String
+  quoteCurrency String
+  rate          Decimal  @db.Decimal(20, 8)
+  effectiveDate DateTime @db.Date
+  source        String
+  createdAt     DateTime @default(now())
+
+  @@unique([baseCurrency, quoteCurrency, effectiveDate])
+}
+
+// 7. CASH FLOW FORECAST
+
+model CashFlowForecast {
+  id              String     @id
+  entityId        String
+  bankAccountId   String?
+  receivableId    String?
+  payableId       String?
+  flowType        FlowType
+  amount          Decimal    @db.Decimal(20, 4)
+  currency        String
+  expectedDate    DateTime   @db.Date
+  status          FlowStatus @default(SCHEDULED)
+  sourceReference String?
+  dedupeKey       String?
+  description     String?
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+
+  entity LegalEntity @relation(fields: [entityId], references: [id], onDelete: Restrict)
+
+  bankAccount BankAccount? @relation(fields: [bankAccountId], references: [id], onDelete: Restrict)
+  receivable  Receivable?  @relation(fields: [receivableId], references: [id], onDelete: Restrict)
+  payable     Payable?     @relation(fields: [payableId], references: [id], onDelete: Restrict)
+
+  adjustments   ScenarioAdjustment[]
+  forecastLines ForecastRunLine[]
+  actualFlows   ActualCashFlow[]
+
+  @@index([entityId, expectedDate])
+  @@index([dedupeKey])
+}
+
+// 8. LIQUIDITY SCENARIO
+
+model LiquidityScenario {
+  id           String       @id
+  name         String
+  code         String       @unique
+  scenarioType ScenarioType
+  description  String?
+  assumptions  Json
+  isActive     Boolean      @default(true)
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  forecastRuns ForecastRun[]
+  adjustments  ScenarioAdjustment[]
+}
+
+// 9. FORECAST RUN
+
+model ForecastRun {
+  id                String               @id
+  scenarioId        String
+  version           Int
+  asOfDate          DateTime             @db.Date
+  cutoffAt          DateTime
+  reportingCurrency String
+  status            ForecastStatus       @default(PENDING)
+  startedAt         DateTime?
+  completedAt       DateTime?
+  comparisons       ForecastComparison[]
+  errorMessage      String?
+  createdAt         DateTime             @default(now())
+
+  scenario LiquidityScenario @relation(fields: [scenarioId], references: [id], onDelete: Restrict)
+
+  items ForecastRunItem[]
+  lines ForecastRunLine[]
+
+  @@unique([scenarioId, version])
+}
+
+// SUPPORTING TABLES
+
+model ScenarioAdjustment {
+  id                 String         @id
+  scenarioId         String
+  cashFlowForecastId String
+  adjustmentType     AdjustmentType
+  delayDays          Int?
+  amountMultiplier   Decimal?       @db.Decimal(12, 6)
+  description        String?
+
+  scenario         LiquidityScenario @relation(fields: [scenarioId], references: [id], onDelete: Restrict)
+  cashFlowForecast CashFlowForecast  @relation(fields: [cashFlowForecastId], references: [id], onDelete: Restrict)
+
+  @@index([scenarioId])
+}
+
+model ForecastRunItem {
+  id                      String   @id
+  forecastRunId           String
+  bankAccountId           String
+  forecastDate            DateTime @db.Date
+  currency                String
+  openingBalance          Decimal  @db.Decimal(20, 4)
+  totalInflows            Decimal  @db.Decimal(20, 4)
+  totalOutflows           Decimal  @db.Decimal(20, 4)
+  closingBalance          Decimal  @db.Decimal(20, 4)
+  reportingCurrency       String
+  fxRateUsed              Decimal? @db.Decimal(20, 8)
+  closingBalanceReporting Decimal? @db.Decimal(20, 4)
+
+  forecastRun ForecastRun @relation(fields: [forecastRunId], references: [id], onDelete: Restrict)
+  bankAccount BankAccount @relation(fields: [bankAccountId], references: [id], onDelete: Restrict)
+
+  @@unique([forecastRunId, bankAccountId, forecastDate])
+}
+
+model ForecastRunLine {
+  id                 String   @id
+  forecastRunId      String
+  cashFlowForecastId String
+  originalDate       DateTime @db.Date
+  adjustedDate       DateTime @db.Date
+  originalAmount     Decimal  @db.Decimal(20, 4)
+  adjustedAmount     Decimal  @db.Decimal(20, 4)
+  originalCurrency   String
+  reportingAmount    Decimal? @db.Decimal(20, 4)
+  inclusionStatus    String
+  exclusionReason    String?
+
+  forecastRun      ForecastRun      @relation(fields: [forecastRunId], references: [id], onDelete: Restrict)
+  cashFlowForecast CashFlowForecast @relation(fields: [cashFlowForecastId], references: [id], onDelete: Restrict)
+}
+
+model ActualCashFlow {
+  id                 String   @id
+  bankAccountId      String
+  cashFlowForecastId String?
+  actualDate         DateTime @db.Date
+  flowType           FlowType
+  amount             Decimal  @db.Decimal(20, 4)
+  currency           String
+  reference          String?
+  createdAt          DateTime @default(now())
+
+  bankAccount      BankAccount       @relation(fields: [bankAccountId], references: [id], onDelete: Restrict)
+  cashFlowForecast CashFlowForecast? @relation(fields: [cashFlowForecastId], references: [id], onDelete: Restrict)
+}
+
+model AccountBalanceSnapshot {
+  id                       String   @id
+  bankAccountId            String
+  snapshotDate             DateTime @db.Date
+  openingBalance           Decimal  @db.Decimal(20, 4)
+  ledgerInflows            Decimal  @db.Decimal(20, 4)
+  ledgerOutflows           Decimal  @db.Decimal(20, 4)
+  calculatedClosingBalance Decimal  @db.Decimal(20, 4)
+  statementClosingBalance  Decimal? @db.Decimal(20, 4)
+  reconciliationDifference Decimal? @db.Decimal(20, 4)
+  isReconciled             Boolean
+  createdAt                DateTime @default(now())
+
+  bankAccount BankAccount @relation(fields: [bankAccountId], references: [id], onDelete: Restrict)
+
+  @@unique([bankAccountId, snapshotDate])
+}
+
+model ForecastComparison {
+  id              String   @id
+  forecastRunId   String
+  bankAccountId   String
+  comparisonDate  DateTime @db.Date
+  forecastAmount  Decimal  @db.Decimal(20, 4)
+  actualAmount    Decimal  @db.Decimal(20, 4)
+  variance        Decimal  @db.Decimal(20, 4)
+  variancePercent Decimal? @db.Decimal(12, 6)
+  varianceReason  String?
+
+  forecastRun ForecastRun @relation(fields: [forecastRunId], references: [id], onDelete: Restrict)
+  bankAccount BankAccount @relation(fields: [bankAccountId], references: [id], onDelete: Restrict)
+
+  @@unique([forecastRunId, bankAccountId, comparisonDate])
+  @@index([comparisonDate])
+}
+
+model AuditEvent {
+  id            String   @id
+  aggregateType String
+  aggregateId   String
+  action        String
+  oldValues     Json?
+  newValues     Json?
+  actor         String
+  occurredAt    DateTime @default(now())
+
+  @@index([aggregateType, aggregateId])
+}
+
+model EntityEvent {
+  id             String   @id
+  entityId       String
+  previousStatus String?
+  newStatus      String
+  description    String?
+  occurredAt     DateTime @default(now())
+
+  entity LegalEntity @relation(fields: [entityId], references: [id], onDelete: Restrict)
+
+  @@index([entityId, occurredAt])
+}
