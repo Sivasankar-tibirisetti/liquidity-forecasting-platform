@@ -80,7 +80,3 @@ From the `frontend/` directory:
 npm run lint
 npm run build
 ```
-
-## Reproducibility Note
-
-The generator uses a fixed seed and configurable dataset volumes. Two independent full regenerations with matching row counts and checksums have not been verified for this submission.
